@@ -6,7 +6,7 @@
  * @date 2020Äê3ÔÂ26ÈÕ
  * @version V1.0
  */
-package cn.osxm.springboot.rest;
+package cn.osxm.springboot.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ import cn.osxm.springboot.model.Animal;
  * @author oscarchen
  */
 @RestController
-@RequestMapping(value = "/rest")
+@RequestMapping(value = "/restjson")
 public class JsonController {
 
 	@GetMapping(value = "/str2bool")

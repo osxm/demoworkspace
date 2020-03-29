@@ -13,6 +13,8 @@ public class Animal {
 	private String name;
 
 	@JsonSerialize(using = StringToBoolSerializer.class)
+	//@JsonFormat(shape=Shape.BOOLEAN)
+	//@JsonSerialize(using = BooleanSerializer.class)
 	private String extinct;
 
 	public String getName() {
