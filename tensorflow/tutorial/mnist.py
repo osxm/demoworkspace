@@ -19,7 +19,7 @@ model = tf.keras.models.Sequential([
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
- #6. 训练并验证模型
-model.fit(x_train, y_train, epochs=5)
-#7. 评估模型
+ #6. 训练并验证模型（使用训练集数据）
+model.fit(x_train, y_train, epochs=10)
+#7. 评估模型（使用测试集数据）
 model.evaluate(x_test,  y_test, verbose=2)
