@@ -3,7 +3,7 @@
  * @Package cn.osxm.springboot.config
  * @Description: TODO
  * @author oscarchen
- * @date 2020Äê4ÔÂ8ÈÕ
+ * @date 2020å¹´4æœˆ8æ—¥
  * @version V1.0
  */
 package cn.osxm.springboot.config;
@@ -28,8 +28,8 @@ public class MvcInterceptorConfig extends WebMvcConfigurationSupport{
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        // addPathPatterns ,À¹½ØÂ·¾¶/**±íÊ¾À¹½ØËùÓĞÇëÇó
-        // excludePathPatterns ²»ĞèÒªÀ¹½ØµÄÂ·¾¶
+        // addPathPatterns ,æ‹¦æˆªè·¯å¾„/**è¡¨ç¤ºæ‹¦æˆªæ‰€æœ‰è¯·æ±‚
+        // excludePathPatterns ä¸éœ€è¦æ‹¦æˆªçš„è·¯å¾„
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**")
         .excludePathPatterns("/login","/account/register");    
         super.addInterceptors(registry);
