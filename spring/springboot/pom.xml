@@ -40,10 +40,10 @@
 			<scope>runtime</scope>
 			<optional>true</optional><!-- 开发时不需要重启即可查看更改效果 -->
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>		
+		</dependency>-->		
 	   <!-- JSP -->
        <dependency>
            <groupId>org.apache.tomcat.embed</groupId>
