@@ -38,7 +38,7 @@ public class UsrServiceImpl implements UsrService {
 	@Override
 	public List<Usr> listUnSafe(String id) {
 		String hql = "from Usr where id=" + id;
-		return em.createQuery(hql, Usr.class).setParameter("id", id).getResultList();
+		return em.createQuery(hql, Usr.class).getResultList();
 	}
 
 }

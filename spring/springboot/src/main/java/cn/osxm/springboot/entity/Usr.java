@@ -9,6 +9,7 @@
 package cn.osxm.springboot.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @ClassName: Usr
@@ -18,6 +19,7 @@ import javax.persistence.Entity;
 @Entity
 public class Usr {
 
+	@Id
 	private Integer id;
 
 	private String name;

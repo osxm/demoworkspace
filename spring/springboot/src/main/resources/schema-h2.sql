@@ -1,4 +1,4 @@
-CREATE TABLE USER (
-USE_ID int not null primary key auto_increment,
-USE_NAME varchar(100)
+CREATE TABLE USR (
+ID int not null primary key auto_increment,
+NAME varchar(100)
 );
