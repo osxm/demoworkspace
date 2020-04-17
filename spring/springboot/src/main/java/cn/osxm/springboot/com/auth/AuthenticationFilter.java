@@ -3,7 +3,7 @@
  * @Package cn.osxm.springboot.com
  * @Description: TODO
  * @author oscarchen
- * @date 2020年4月8日
+ * @date 2020锟斤拷4锟斤拷8锟斤拷
  * @version V1.0
  */
 package cn.osxm.springboot.com.auth;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 //@WebFilter(urlPatterns = "/**", filterName = "authenFilter")
 public class AuthenticationFilter implements Filter {
 
-	// 排除的url
+	// 
 	private static final String[] excludePathPatterns = { "/login" };
 
 	@Override
@@ -38,14 +38,13 @@ public class AuthenticationFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
-		// 获取请求url地址，不拦截excludePathPatterns中的url
+		// 
 		String url = req.getRequestURI();
 		if (Arrays.asList(excludePathPatterns).contains(url)) {
-			// 放行，相当于第一种方法中LoginInterceptor返回值为true
+			// 
 			chain.doFilter(request, response);
 		} else {
-			System.out.println("开始拦截了................");
-			// 业务代码
+			//System.out.println("");
 		}
 
 	}

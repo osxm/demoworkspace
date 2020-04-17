@@ -7,6 +7,6 @@
 <title>JSP Page</title>
 </head>
 <body>
-   ${msg} 
+   Static JSP Page
 </body>
 </html>

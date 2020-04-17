@@ -19,11 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class JspController {
+
 	@GetMapping("/myjsp")
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView();
-        mv.addObject("msg","Hello， JSP");
-        mv.setViewName("myjsp");
-        return mv;   
+		mv.addObject("msg", "Hello, This is JSP.");
+		mv.setViewName("myjsp");
+		return mv;
 	}
 }
