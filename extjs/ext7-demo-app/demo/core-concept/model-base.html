@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Model基础Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.model.General', { //将军类
+            name: '',
+            constructor: function (name) {
+                if (name) {
+                    this.name = name;
+                }
+            },
+            combat: function (address) {
+                alert(this.name + " 战斗在" + address);
+            }
+        });
+
+        var mayun = Ext.create('MyApp.model.General', '赵云');  //创建类实例（对象）
+        mayun.combat("长坂坡");//调用类对象的方法
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
