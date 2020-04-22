@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.form.Panel', {
+                items: [{
+                    xtype: 'textfield',
+                    fieldLabel: 'My Text',
+                    value: '<img src=@ onerror=alert(document.domain)>'
+                }, {
+                    xtype: 'displayfield',
+                    fieldLabel: 'Display ',
+                    value: '<img src=@ onerror=alert(document.domain)>'
+                }, {
+                    xtype: 'displayfield',
+                    fieldLabel: ' Display With tpl',
+                    value: '<img src=@ onerror=alert(document.domain)>',
+                    tpl: Ext.Template("<div>Hello {0}.</div>")
+                }],
+                renderTo: Ext.getBody()
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
