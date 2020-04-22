@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('Product', {
+            extend: 'Ext.Component',
+            statics: {
+                factory: function (name) {
+                    return new this({ name: name });//this是类本身，这里是Product
+                }
+            },
+            config: {
+                name: null
+            }
+        });
+
+        var phone = Product.factory('Phone');
+        alert(phone.getName());
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

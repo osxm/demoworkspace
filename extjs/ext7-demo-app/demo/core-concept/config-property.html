@@ -1,0 +1,52 @@
+<!--config-property.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Class config属性Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.view.MyPanel', {
+            extend: 'Ext.Component',
+            //extend: 'Ext.Base', //从Base继承需要调用initConfig()
+            config: {
+                myTitle: 'My Title'
+            },
+            applyMyTitle: function (myTitle) {
+                if (!Ext.isString(myTitle) || myTitle.length === 0) {
+                    alert('Error: My Title must be a valid non-empty string');
+                }
+                else {
+                    return "applyMyTitle " + myTitle;
+                }
+            }
+        });
+
+        var myPanel = Ext.create('MyApp.view.MyPanel', {
+            myTitle: 'My Title'
+        });
+        //myPanel.initConfig();
+
+        alert(myPanel.getMyTitle());
+    </script>
+
+    <script>
+        //执行脚本
+
+
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
