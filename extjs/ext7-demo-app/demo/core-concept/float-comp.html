@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var panel = Ext.create('Ext.panel.Panel', {
+                width: 200,
+                height: 100,
+                floating: true,
+                title: 'Test',
+                html: 'Test Panel'
+            });
+            panel.show();
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

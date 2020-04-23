@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.General', { //将军类
+            extend: 'Ext.Component',
+            name: '',
+            constructor: function (name) {
+                if (name) {
+                    this.name = name;
+                }
+            },
+            combat: function (address) {
+                //throw new Error('['+ Ext.getDisplayName(arguments.callee) +'] Error message here');
+                console.log('[' + Ext.getDisplayName(arguments.callee) + '] Error message here');
+                alert(this.name + " 战斗在" + address);
+            }
+        });
+
+        var mayun = Ext.create('MyApp.General', '赵云');  //创建类实例（对象）
+        mayun.combat("长坂坡");//调用类对象的方法
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

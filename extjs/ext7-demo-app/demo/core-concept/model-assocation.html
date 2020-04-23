@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.define('MyApp.model.Base', {
+            extend: 'Ext.data.Model',
+            fields: [{
+                name: 'id',
+                type: 'int'
+            }],
+            schema: {
+                namespace: 'MyApp.model'
+                /*,proxy: {     // Ext.util.ObjectTemplate
+                    type: 'memory',
+                    reader: {
+                        type: 'json',
+                        data: data,
+                        rootProperty: '{entityName:lowercase}'
+                    }
+                }*/
+            }
+        });
+        Ext.define('MyApp.model.Kingdom', { //三国之王国类
+            extend: 'MyApp.model.Base',
+            fields: [{
+                name: 'name',
+                type: 'string'
+            }]
+        });
+        Ext.define('MyApp.model.General', { //将军类
+            extend: 'MyApp.model.Base',
+            fields: [{
+                name: 'kingdomId',
+                reference: 'Kingdom',//entityName  
+                type: 'int'
+            }, {
+                name: 'courtesyName',
+                type: 'string'
+            }]//字,关羽，字云长
+        });
+
+        /* var  kingdom = new MyApp.model.Kingdom({
+             id:1,
+             name:"蜀国"
+         });*/
+        var kingdom = Ext.create('MyApp.model.Kingdom', {
+            id: 1,
+            name: "蜀国"
+        });
+
+        kingdom.generals().add({
+            "kingdomId": 1,
+            "courtesyName": "翼德"
+        })
+
+        kingdom.generals(function (generals) {
+            generals.each(function (general) {
+                console.log('General: ' + general.get('courtesyName'));
+            });
+        });
+
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

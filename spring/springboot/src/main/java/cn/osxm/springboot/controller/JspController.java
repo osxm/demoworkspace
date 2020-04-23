@@ -27,4 +27,12 @@ public class JspController {
 		mv.setViewName("myjsp");
 		return mv;
 	}
+	
+	@GetMapping("/xss")
+	public ModelAndView xss() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", "<script>alert('hello');</script>");
+		mv.setViewName("xss-stored");
+		return mv;
+	}
 }

@@ -61,13 +61,13 @@ public class HackAttackController {
 	public String stroedXss(ModelMap map) {
 
 		map.addAttribute("usr", service.get(1));
-		return "1";
+		return "storedxss";
 	}
 
 	@RequestMapping("/save-user")
 	public String saveUser(Integer id, String name, ModelMap map) {
 		service.saveUser(id, name);
 		map.addAttribute("usr", service.get(1));
-		return "1";
+		return "storedxss";
 	}
 }
