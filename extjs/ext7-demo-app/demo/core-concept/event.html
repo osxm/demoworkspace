@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var button = Ext.create('Ext.Button', {
+                text: 'Click Me',
+                renderTo: 'mydiv'
+            });
+
+            var panel1 = Ext.create('Ext.Panel', {
+                title: '按钮点击事件的scope设置为该Panel',
+            });
+
+            var panel2 = Ext.create('Ext.Panel', {
+                title: '一般的Panel'
+            });
+
+
+            button.on({
+                click: function () {
+                    Ext.Msg.alert('Success!', this.getXType() + this.getTitle());
+                },
+                scope: panel1
+            });
+
+            var singleClidkbutton = Ext.create('Ext.Button', {
+                text: '仅监听一次点击事件',
+                listeners: {
+                    click: {
+                        single: true,
+                        fn: function () {
+                            Ext.Msg.alert('Success!', 'I will say this only once');
+                        }
+                    }
+                }
+            });
+
+
+            var myEventButton = Ext.create('Ext.Button', {
+                text: '自定义事件',
+                listeners: {
+                    myEvent: function (button, time) {
+                        Ext.Msg.alert('Success!', 'myEvent fired! You click at  ' + time);
+                    }
+                }
+            });
+
+
+            var mycontainer = Ext.create('Ext.Container', {
+                html: '添加事件到容器!',
+                listeners: {
+                    click: function () {
+                        Ext.Msg.alert('Success!', 'I have been clicked!')
+                    }
+                }
+            });
+
+
+            Ext.create('Ext.container.Container', {
+                renderTo: Ext.getBody(),
+                items: [panel1,
+                    panel2,
+                    singleClidkbutton, myEventButton, mycontainer]
+            });
+
+            myEventButton.fireEvent('myEvent', myEventButton, new Date());
+
+            mycontainer.getEl().on('click', function () {
+                this.fireEvent('click', mycontainer);
+            }, mycontainer);
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="mydiv"></div>
+</body>
+
+</html>
