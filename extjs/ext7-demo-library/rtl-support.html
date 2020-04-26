@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ext JS作为库使用示例</title>
+    <link rel="stylesheet" type="text/css" href="ext/classic/theme-neptune/resources/theme-neptune-all-rtl.css">
+    <script type="text/javascript" src="ext/ext-all-rtl.js"></script>
+    <script type="text/javascript" src="ext/classic/theme-neptune/theme-neptune.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script>
+        /*Ext.onReady(function () {
+            Ext.create(Ext.panel.Panel, {
+                title: 'Hello,Ext JS',
+                renderTo: Ext.getBody()
+            })
+        });*/
+
+        Ext.application({
+            name: 'MyApp',
+            launch: function () {
+                Ext.create('Ext.container.Viewport', {
+                    renderTo: Ext.getBody(),
+                    //rtl: true,
+                    html: "Hello,Ext JS"
+                });
+
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
