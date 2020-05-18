@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        Ext.define('Kingdom', { //王国类
+            extend: 'Ext.data.Model',
+            fields: ['kname']
+        });
+
+        Ext.define('General', { //将军类
+            extend: 'Ext.data.Model',
+            fields: ['gname', {
+                name: 'kingdomId',
+                reference: 'Kingdom'
+            }]
+        });
+
+        var viewModel = new Ext.app.ViewModel({
+            links: {
+                oneGeneral: {
+                    type: 'General',
+                    id: 1
+                }
+            }
+        });
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

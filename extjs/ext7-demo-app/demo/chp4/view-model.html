@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //1. links和data
+        Ext.define('MyApp.model.General', {
+            extend: 'Ext.data.Model',
+            fields: ['name']
+        });
+        var rec = new MyApp.model.General({
+            id: 2,
+            name: '关羽'
+        });
+        var viewModel = new Ext.app.ViewModel({
+            links: {
+                oneGeneral: {
+                    type: 'MyApp.model.General',
+                    id: 1
+                }
+            }, data: {
+                twoGeneral: rec
+            }
+        });
+        viewModel.bind('{oneGeneral.name}', function (v) {
+            console.log(v);
+        });
+        viewModel.bind('{twoGeneral.name}', function (v) {
+            console.log(v);
+        });
+
+
+        //2. 绑定模型的字段
+        var bindingObj = viewModel.bind('Hello {twoGeneral.name}, you id is {twoGeneral.id}', function (v) {
+            console.log(v);
+        });
+
+        //3. 公式
+        var viewModel = new Ext.app.ViewModel({
+            formulas: {
+                isNameModified: {
+                    bind: {
+                        bindTo: '{oneGeneral}',
+                        deep: true
+                    }, get: function (rec) {
+                        return rec.isModified('name')
+                    }
+                }
+            }, data: {
+                oneGeneral: rec
+            }
+        });
+        viewModel.bind('{isNameModified}', function (modified) {
+            console.log("名字修改：" + modified);
+        });
+        rec.set('name', '张飞');
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
