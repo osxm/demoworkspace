@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+
+    <!--Chart 的JS和CSS-->
+    <script type="text/javascript" src="../../ext/build/packages/charts/classic/charts.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="../../ext/build/packages/charts/classic/neptune/resources/charts-all.css">
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            //三国实力对比数据
+            Ext.create('Ext.data.Store', {
+                storeId: 'powerCompareStore',
+                fields: ['kingdom', 'city', 'population'], //王国、城池、人口
+                data: [{
+                    kingdom: '魏',
+                    city: 26,
+                    population: 44300000
+                }, {
+                    kingdom: '蜀',
+                    city: 8,
+                    population: 9400000
+                }, {
+                    kingdom: '吴',
+                    city: 14,
+                    population: 23000000
+                }]
+            });
+
+            // Use: Ext.chart.CartesianChart or Ext.chart.Chart
+            Ext.create('Ext.chart.Chart', {
+                renderTo: Ext.getBody(),
+                width: 600,
+                height: 300,
+                shadow: true,
+                insetPadding: '20 10',
+                store: 'powerCompareStore', //数据
+                axes: [ //坐标轴                    
+                    {  // Y 轴（axis）
+                        type: 'numeric',
+                        position: 'left', //坐标轴位置：左边
+                        fields: 'city',
+                        title: '城池'
+                    }, {// X 轴（ Axis）
+                        type: 'category',
+                        position: 'bottom', //坐标轴位置：底部
+                        fields: 'kingdom'
+                    }
+                ],
+                series: [{ // 图的类型
+                    type: 'bar',
+                    xField: 'kingdom',
+                    yField: 'city'
+                }]
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

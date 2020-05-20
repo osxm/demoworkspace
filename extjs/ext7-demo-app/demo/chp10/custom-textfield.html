@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.view.MyFieldWithPrefix', {
+            extend: 'Ext.form.field.Text',
+            xtype: 'myfieldwithprefix',
+
+            preSubTpl: [
+                '<div style="width:80%" id="{cmpId}-triggerWrap" data-ref="triggerWrap"',//1. 修改1：width:80%，预留空间给Prefix
+                '<tpl if="ariaEl == \'triggerWrap\'">',
+                '<tpl foreach="ariaElAttributes"> {$}="{.}"</tpl>',
+                '<tpl else>',
+                ' role="presentation"',
+                '</tpl>',
+                ' class="{triggerWrapCls} {triggerWrapCls}-{ui}">',
+                '<div id={cmpId}-inputWrap data-ref="inputWrap"',
+                ' role="presentation" class="{inputWrapCls} {inputWrapCls}-{ui}">'
+            ],
+            getSubTplMarkup: function (fieldData) {
+                var me = this,
+                    data = me.getSubTplData(fieldData),
+                    preSubTpl = me.lookupTpl('preSubTpl'),
+                    postSubTpl = me.lookupTpl('postSubTpl'),
+                    markup = '<div style="float:left;line-height:30px;">139</div>';//修改2： 新增Prefix，这里以139开头的手机号为例
+                if (preSubTpl) {
+                    markup += preSubTpl.apply(data);
+                }
+                markup += me.lookupTpl('fieldSubTpl').apply(data);
+
+                if (postSubTpl) {
+                    markup += postSubTpl.apply(data);
+                }
+                return markup;
+            }
+        });
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.form.Panel', {
+                title: 'My Form',
+                width: 300,
+                bodyPadding: 10,
+                renderTo: Ext.getBody(),
+                items: [{
+                    xtype: 'myfieldwithprefix',
+                    name: 'name',
+                    fieldLabel: '139开头电话号码',
+                    allowBlank: false  // requires a non-empty value
+                }]
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

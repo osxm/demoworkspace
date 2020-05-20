@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        //1. 面板中的子组件的监听事件的方法默认是该面板的控制器
+        Ext.define('MyApp.view.Kingdom', {
+            extend: 'Ext.panel.Panel',
+            xtype: 'kingdom',
+            controller: 'kingdom',
+            items: [{
+                xtype: 'textfield',
+                fieldLabel: '王国名称',
+                listeners: {
+                    change: 'onNameChange'
+                }
+            }]
+        });
+
+        Ext.define('MyApp.view.KingdomController', {
+            extend: 'Ext.app.ViewController',
+            alias: 'controller.kingdom',
+            onNameChange: function (nameTextField) {
+                console.log(nameTextField.getValue());
+            }
+        });
+
+
+        //2. 自定义带范围的事件
+        Ext.define('MyApp.view.MyTextField', {
+            extend: 'Ext.form.field.Text',
+            xtype: 'mytextfield',
+            controller: 'mytextfield',
+            listeners: {
+                myEvent: 'onMyEvent'
+                //,scope: 'controller'
+            }
+        });
+        Ext.define('MyApp.view.MyTextFieldController', {
+            extend: 'Ext.app.ViewController',
+            alias: 'controller.mytextfield',
+            onMyEvent: function () {
+                console.log('MyEvent fired in My TextField.');
+            }
+        });
+
+        Ext.define('MyApp.view.Kingdom2', {
+            extend: 'Ext.panel.Panel',
+            xtype: 'kingdom2',
+            controller: 'kingdom2',
+            items: [{
+                xtype: 'mytextfield',
+                fieldLabel: '王国名称',
+                itemId: 'name',
+                listeners: {
+                    myEvent: 'onMyEvent'
+                }
+            }],
+            tbar: [{
+                text: '触发子组件的自定义事件',
+                handler: function (thisBtn) {
+                    var kingdom2 = thisBtn.findParentByType('kingdom2');
+                    kingdom2.getComponent('name').fireEvent('myEvent');
+                    //kingdom2.fireEvent('myEvent'); 无效
+                }
+            }]
+        });
+
+        Ext.define('MyApp.view.KingdomController2', {
+            extend: 'Ext.app.ViewController',
+            alias: 'controller.kingdom2'
+            , onMyEvent: function () {
+                console.log('MyEvent fired in Parent.');
+            }
+        });
+
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.container.Container', {
+                items: [{
+                    xtype: 'kingdom'
+                }, {
+                    xtype: 'kingdom2'
+                }],
+                renderTo: Ext.getBody()
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
