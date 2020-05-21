@@ -14,16 +14,44 @@
             fields: ['name'], //新增字段
             schema: {
                 namespace: 'MyApp.model',//命名空间，等同于包名
-                 proxy:'{entityName}.json' 
+                proxy: {     // Ext.util.ObjectTemplate
+                    type: 'ajax',//
+                    url: '{entityName}.json',//短类名，这里Base，子类使用各自的
+                    reader: {
+                        type: 'json',
+                        rootProperty: '{entityName:lowercase}'
+                    }
+                }
             }
         });
+
+        Ext.define('MyApp.model.Kingdom', {  //
+            extend: 'MyApp.model.Base',
+            fields: ['capital'] //都城
+        });
+        MyApp.model.Kingdom.load({
+            success: function (kingdom) {
+                console.log(kingdom.get("name")); //
+            }
+        });
+
+
+        Ext.define('MyApp.model.General', {  //
+            extend: 'MyApp.model.Base',
+            fields: ['courtesyName', {
+                name: 'kingdomId',   //外键
+                reference: 'Kingdom' //关联的类，使用短类名即可，不需要加包名
+            }]
+        });
+
+
 
     </script>
 
     <script>
         //执行脚本
         Ext.onReady(function () {
-
+           
         });
     </script>
 
