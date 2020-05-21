@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.model.Base', {  //基类
+            extend: 'Ext.data.Model', //继承基类，Ext.data.Model默认包含id字段
+            fields: ['name'], //新增字段
+            schema: {
+                namespace: 'MyApp.model'//命名空间，等同于包名
+            }
+        });
+
+        Ext.define('MyApp.model.Kingdom', {  //基类
+            extend: 'MyApp.model.Base',
+            fields: ['capital'] //都城
+        });
+        Ext.define('MyApp.model.General', {  //基类
+            extend: 'MyApp.model.Base',
+            fields: ['courtesyName', {
+                name: 'kingdomId',
+                reference: 'Kingdom'
+            }] //字，别称
+        });
+        var kingdomDatas = [{
+            id: 1,
+            name: "蜀",
+            capital: "益州",
+            generals: [{
+                id: 101,
+                name: "刘备",
+                courtesyName: "玄德"
+            }, {
+                id: 102,
+                name: "关羽",
+                courtesyName: "云长"
+            }]
+        }];
+
+        var kingdomStore = Ext.create('Ext.data.Store', {
+            model: 'MyApp.model.Kingdom',
+            autoLoad: true,
+            data: kingdomDatas,
+            proxy: {
+                type: 'memory',
+                reader: {
+                    type: 'json'
+                }
+            }
+        });
+        var rec = kingdomStore.getAt(0);
+        var generalStore = rec.generals();
+        var general = generalStore.getAt(0);
+        console.log(rec.get("name")+":"+general.get("name"));
+
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

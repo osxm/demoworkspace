@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.model.Base', {  //基类
+            extend: 'Ext.data.Model', //继承基类，Ext.data.Model默认包含id字段
+            fields: ['name'], //新增字段
+            schema: {
+                namespace: 'MyApp.model',//命名空间，等同于包名
+                 proxy:'{entityName}.json' 
+            }
+        });
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

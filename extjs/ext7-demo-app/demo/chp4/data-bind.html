@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        //1. 双向描述符， 绑定字符串
+        var viewModel = new Ext.app.ViewModel();
+        var binding = viewModel.bind('{s}', function (s) { console.log('s=' + s) });
+        binding.setValue('1234');
+        var bindingValue = binding.getValue();
+        console.log('bindingValue=' + bindingValue);
+
+        //3.对象绑定
+        viewModel.bind({
+            name: '{name}',
+            kingdom: {
+                city: '{city}'
+            }
+        }, function () { });
+        binding.setValue({ name: '刘备', kingdom: { city: '益州' } });
+        bindingValue = binding.getValue();
+        console.log(bindingValue.name + bindingValue.kingdom.city); //刘备益州
+
+        //4. 包含bindTo属性 ， 虽然绑定的参数是对象类型，但其实是对字符串绑定
+        var viewModel4 = new Ext.app.ViewModel();
+        var binding4 = viewModel4.bind({ bindTo: '{name}', single: true }, function (name) { console.log('name=' + name) });
+        binding4.setValue('刘备');
+        var bindingValue = binding4.getValue();
+        console.log('bindingValue=' + bindingValue);
+
+        //5. 深度绑定， 每个属性改变都调用回调
+        var viewModel5 = new Ext.app.ViewModel();
+        var obj = { name: '刘备', kingdom: { city: '益州' } };
+        var binding5 = viewModel5.bind({
+            bindTo: '{obj}',
+            deep: true
+        }, function (obj) {
+            console.log('深度绑定=' + Ext.encode(obj));
+        });
+        binding5.setValue(obj);
+        //viewModel5.set("obj.kingdom.city","汉中");
+        //var binding5Value = binding5.getValue();
+        //console.log('binding5Value=' + binding5Value);
+        //viewModel5.set("city","汉中");
+        //viewModel5.set("name","关羽");
+
+
+        //6.绑定时机
+        var viewModel6 = new Ext.app.ViewModel();
+        viewModel6.bind('{name}', function (v) {
+            console.log('绑定时机：' + v);
+        });
+        viewModel6.set('name', '刘备');
+        viewModel6.notify();
+        viewModel6.set('name', '关羽');
+        viewModel6.notify();
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            //2. 绑定组件，双向绑定
+            Ext.create('Ext.panel.Panel', {
+                viewModel: viewModel,
+                items: [{
+                    xtype: 'textfield',
+                    fieldLable: 'My Label',
+                    bind: '{s}'  // 双向绑定描述, 模型数据和视图双向绑定
+                }],
+                tbar: [{
+                    text: 'Get Value',
+                    handler: function () {
+                        var bindingValue = binding.getValue();
+                        alert('bindingValue=' + bindingValue);
+                    }
+                }],
+                renderTo: 'div1'
+            });
+
+            //5.2
+            Ext.create('Ext.panel.Panel', {
+                viewModel: viewModel5,
+                renderTo: 'div2',
+                tbar: [{
+                    text: 'Change Model Value',
+                    handler: function () {
+                        viewModel5.set("obj.kingdom.city", "汉中");
+                        //obj.kingdom.city = "汉中";
+                        //viewModel5.set("kingdom.city","汉中");
+                        //viewModel5.set("name","关羽");
+                        //alert(viewModel5.get("obj.name"));
+                        //var binding5Value = binding5.getValue();
+                        //alert(Ext.encode(binding5Value));
+                        //var bindingValue = binding5.getValue();
+                        //alert('bindingValue=' + bindingValue);
+                    }
+                }],
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+
+</html>

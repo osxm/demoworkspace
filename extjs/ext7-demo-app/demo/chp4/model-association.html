@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        //1. 按键关联
+        //王国类
+        Ext.define('Kingdom', {
+            extend: 'Ext.data.Model',
+            fields: ['id', 'name']
+        });
+        //将军类
+        Ext.define('General', {
+            extend: 'Ext.data.Model',
+            fields: ['id', 'name'
+                , {
+                    name: 'kingdomId',
+                    reference: 'Kingdom' //关联
+                }]
+        });
+
+        var datas = [
+            {
+                "id": 1,
+                "name": "蜀",
+                "generals": [{
+                    "id": 101,
+                    //"kingdomId": 1,  //可以不要
+                    "name": "刘备"
+                }, {
+                    "id": 102,
+                    //"kingdomId": 1,  //可以不要
+                    "name": "关羽"
+                }]
+            }
+        ];
+        var kingdomStore = new Ext.data.Store({
+            model: 'Kingdom',
+            data: datas,
+            autoLoad: true,
+            proxy: {
+                type: 'memory',
+                reader: {
+                    type: 'json'
+                }
+            }
+        });
+
+        var firstKingdom = kingdomStore.first();
+        console.log(firstKingdom.get("name"));
+        var generalStore = firstKingdom.generals();
+        var firstGeneral = generalStore.first();
+        console.log(generalStore.getCount()+":"+firstGeneral.get("name"));
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
