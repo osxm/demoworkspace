@@ -1,0 +1,18 @@
+"builds": {
+    "mymodern": {
+        "toolkit": "modern",
+        "theme": "theme-cupertino",
+        "requires": [
+            "charts",
+            "ux"
+        ]
+    },
+    "myclassic": {
+        "toolkit": "classic",
+        "theme": "theme-neptune",
+        "slicer": null,
+        "requires": [
+            "charts"
+        ]
+    }
+}

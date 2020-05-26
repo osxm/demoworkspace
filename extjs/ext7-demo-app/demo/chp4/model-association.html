@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
     <title>ExtJS7 Demo</title>
     <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
     <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
@@ -51,12 +52,11 @@
                 }
             }
         });
-
-        var firstKingdom = kingdomStore.first();
-        console.log(firstKingdom.get("name"));
-        var generalStore = firstKingdom.generals();
-        var firstGeneral = generalStore.first();
-        console.log(generalStore.getCount()+":"+firstGeneral.get("name"));
+        var firstKingdom = kingdomStore.first(); //获取Store的第一个记录
+        console.log(firstKingdom.get("name")); //控制台打印
+        var generalStore = firstKingdom.generals(); //generals()， 自动产生的方法， 获取关联的Store
+        var firstGeneral = generalStore.first();  //关联Store的第一个记录
+        console.log(generalStore.getCount()+":"+firstGeneral.get("name")); //
     </script>
 
     <script>

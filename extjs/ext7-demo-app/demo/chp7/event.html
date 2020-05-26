@@ -1,23 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ExtJS7 Demo</title>
-<script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
-<link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet" type="text/css" />
-<script>
-    //类型定义
-</script>
 
-<script>
-    //执行脚本
-	Ext.onReady(function() {
-		
-	});
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            //1.在创建实例时添加
+            Ext.create('Ext.Button', {
+                renderTo: Ext.getBody(),
+                text: 'My Button',
+                listeners: {
+                    click: function () {
+                        alert("Click")
+                    }
+                }
+            });
+            //2.已有实例上添加
+            var button = Ext.create('Ext.Button', {
+                renderTo: Ext.getBody(),
+                text: 'My Button'
+            });
+            button.on('click', function () {
+                alert("Click")
+            });
+
+            //3.使用 un()方法可以移除已经添加的监听
+            var doSomething = function () {
+                Ext.Msg.alert('Success!', 'listener called');
+            };
+            var button = Ext.create('Ext.Button', {
+                renderTo: Ext.getBody(),
+                text: 'My Button',
+                listeners: {
+                    click: doSomething,
+                }
+            });
+            Ext.defer(function () { //3秒后移除事件
+                button.un('click', doSomething);
+            }, 3000);
+
+
+            //4. 监听的范围
+            var panel = Ext.create('Ext.Panel', {
+                html: 'Panel HTML'
+            });
+            var button = Ext.create('Ext.Button', {
+                renderTo: Ext.getBody(),
+                text: 'Click Me'
+            });
+            button.on({
+                click: function () {
+                    Ext.Msg.alert('Success!', this.getXType()); //默认是button,设置scope为panel,则是panel
+                }, scope: panel
+            });
+
+            //5.只监听一次
+            var singleClidkbutton = Ext.create('Ext.Button', {
+                text: '仅监听一次点击事件',
+                listeners: {
+                    click: {
+                        single: true,
+                        fn: function () {
+                            Ext.Msg.alert('Success!', '仅执行一次');
+                        }
+                    }
+                }
+            });
+            var myContainer = Ext.create('Ext.container.Container', {
+                items: [singleClidkbutton],
+                renderTo: Ext.getBody()
+            });
+
+            //6. 缓冲配置
+            var button = Ext.create('Ext.Button', {
+                renderTo: Ext.getBody(),
+                text: 'Click Me',
+                listeners: {
+                    click: {
+                        buffer: 2000,
+                        fn: function () {
+                            Ext.Msg.alert('Success!', 'I say this only once every 2 seconds');
+                        }
+                    }
+                }
+            });
+
+            //7.触发事件的方法 fireEvent()
+            var myEventButton = Ext.create('Ext.Button', {
+                text: '自定义事件',
+                listeners: {
+                    myEvent: function (button, time) {
+                        Ext.Msg.alert('Success!', 'myEvent fired! You click at  ' + time);
+                    }
+                }
+            });
+            myEventButton.fireEvent('myEvent', myEventButton, new Date());
+
+            //8.听DOM事件
+            var mycontainer = Ext.create('Ext.Container', {
+                html: '添加事件到容器!',
+                listeners: {
+                    click: function(){
+                        Ext.Msg.alert('Success!', 'I have been clicked!')  
+                    }
+                }
+            });
+            mycontainer.getEl().on('click', function(){ 
+                this.fireEvent('click', mycontainer); 
+            }, mycontainer);
+
+        });
+    </script>
 
 </head>
+
 <body>
 
 </body>
+
 </html>
