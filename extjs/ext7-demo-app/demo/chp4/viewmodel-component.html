@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.model.General', {
+            extend: 'Ext.data.Model',
+            fields: ['name']
+        });
+        var rec = new MyApp.model.General({
+            id: 2,
+            name: '关羽'
+        });
+        var myViewModel = new Ext.app.ViewModel({
+            data: {
+                general: rec
+            }
+        });
+    </script>
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.form.Panel', {
+                viewModel: myViewModel,
+                defaults: {
+                    xtype: 'textfield'
+                },
+                items: [{
+                    name: 'id',
+                    fieldLabel: 'ID',
+                    bind: {
+                        value: '{general.id}'
+                    }
+                }, {
+                    name: 'name',
+                    fieldLabel: 'Name',
+                    bind: {
+                        value: '{general.name}'
+                    }
+                }],
+                renderTo: Ext.getBody()
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

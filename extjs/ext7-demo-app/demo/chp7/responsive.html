@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        //方式1：mixins使用在类定义
+        /*Ext.define('MyApp.view.GeneralSummary', {
+            extend: 'Ext.panel.Panel',
+            mixins: ['Ext.mixin.Responsive'],
+            responsiveConfig: {
+                'width >= 600': {
+                    title: '屏宽>600,长标题：三国（220年－280年）之魏、蜀、吴将军汇总表'
+                },
+                'width < 600': {
+                    title: '屏宽<600,短标题：三国群英'
+                }
+            }
+        });*/
+
+        //2. 方式2： 类实例
+        Ext.define('MyApp.view.GeneralSummary', {
+            extend: 'Ext.panel.Panel',
+            items: [{
+                xtype: 'panel',
+                plugins: 'responsive',
+                responsiveConfig: {
+                    'width >= 600': {
+                        title: '屏宽>600,长标题：三国（220年－280年）之魏、蜀、吴将军汇总表'
+                    },
+                    'width < 600': {
+                        title: '屏宽<600,短标题：三国群英'
+                    }
+                }
+            }]
+        });
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('MyApp.view.GeneralSummary', {
+                renderTo: Ext.getBody()
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
