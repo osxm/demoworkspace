@@ -1,0 +1,1 @@
+# MyNpmExtApp shared/app

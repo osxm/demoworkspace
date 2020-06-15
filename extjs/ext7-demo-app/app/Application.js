@@ -5,8 +5,8 @@
  */
 Ext.define('Ext7DemoApp.Application', {
     extend: 'Ext.app.Application',
-
     name: 'Ext7DemoApp',
+    controllers:['ComUtil'],
 
     quickTips: false,
     platformConfig: {
