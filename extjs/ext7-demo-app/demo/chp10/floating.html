@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                height: 800,
+                width: 1000,
+                items: [{
+                    xtype: 'button',
+                    id:'myButton',
+                    floating: true,
+                    autoShow: true,
+                    text: 'floating Button'
+                }, {
+                    xtype: 'datefield'
+                }, {
+                    xtype: 'grid',
+                    id:'myGrid',
+                    title: 'Grid',
+                    store: [{
+                        name: 'Lisa',
+                        email: 'lisa@simpsons.com',
+                        phone: '555-111-1224'
+                    }, {
+                        name: 'Bart',
+                        email: 'bart@simpsons.com',
+                        phone: '555-222-1234'
+                    }, {
+                        name: 'Homer',
+                        email: 'homer@simpsons.com',
+                        phone: '555-222-1244'
+                    }, {
+                        name: 'Marge',
+                        email: 'marge@simpsons.com',
+                        phone: '555-222-1254'
+                    }],
+                    columns: [{
+                        text: 'Name',
+                        dataIndex: 'name'
+                    }, {
+                        text: 'Email',
+                        dataIndex: 'email',
+                        flex: 1
+                    }, {
+                        text: 'Phone',
+                        dataIndex: 'phone'
+                    }],
+                    height: 200,
+                    width: 400
+                }],
+                tbar:[{
+                    text:'add float button',
+                    handler:function(){
+                        var myButton = Ext.create('Ext.button.Button', {
+                        text:'My Button 2',
+                        id:'myButton2',
+                        floating:true,                  
+                        alignTarget:'myGrid',
+                        defaultAlign:'tr-tr'
+                    });
+                    Ext.getCmp('myButton2').show(); 
+                    }
+                }],
+                renderTo: Ext.getBody()
+            });
+
+            //Ext.getCmp('myButton').show(); //等同autoShow: true设置
+            Ext.getCmp('myButton').alignTo('myGrid','tr-tr'); //第一个参数目标组件ID
+            //Ext.getCmp('myButton').alignTo(Ext.getCmp('myGrid'),'tr-tr');//第一个参数目标组件对象
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
