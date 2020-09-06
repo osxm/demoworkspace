@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>Grid中自定义点击功能的超链接列</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        var users = {
+            "total": 2,
+            "datas": [
+                {
+                    "id": "1",
+                    "name": "曹操",
+                    "city": "豫州"
+                },
+                {
+                    "id": "2",
+                    "name": "刘备",
+                    "city": "荆州"
+                }
+            ]
+        };
+        Ext.onReady(function () {
+            Ext.create(Ext.grid.Panel, {
+                title: 'Grid中自定义点击功能的超链接列',
+                columns: [{
+                    text: '姓名',
+                    dataIndex: 'name',
+                    flex: 1,
+                    renderer: function (value) {
+                        return " <a href='#'>" + value + "</a>"; //空链接用于显示超链接的效果
+                    }
+                }, {
+                    text: '城池',
+                    dataIndex: 'city',
+                    flex: 1
+                }],
+                listeners: {
+                    cellclick: function (thisview, td, cellIndex, record, tr, rowIndex, e, eOpts) {//实现点击动能
+                        if (thisview.getColumnManager().getColumns()[cellIndex].dataIndex == "name") { //点击超链接列的单元格才触发
+                            Ext.Msg.alert("Edit Dialog", "Click Grid Cell");
+                        }
+                    }
+                },
+                store: users.datas,
+                renderTo: Ext.getBody()
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

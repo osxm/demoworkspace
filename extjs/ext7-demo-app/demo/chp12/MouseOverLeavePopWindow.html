@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                title: 'Mouse Over and out of Header',
+                margin: 40,
+                html: 'This is Test',
+                listeners: {
+                    afterrender: function (thisPanel) {
+                        var header = thisPanel.getHeader();
+                        var headerDom = thisPanel.getHeader().getEl();
+                        headerDom.on('mouseover', function () {
+                            var pos = header.getPosition();
+                            if (Ext.getCmp('myWindow') == null) {
+                                Ext.create('Ext.window.Window', {
+                                    id: 'myWindow',
+                                    width: 600,
+                                    height: 400,
+                                    header: false,
+                                    items: {
+                                        xtype: 'form',
+                                        defaults: {
+                                            xtype: 'checkboxgroup'
+                                        },
+                                        items: [{
+                                            items: [{ boxLabel: 'boy', name: 'gender', inputValue: '1' },
+                                            { boxLabel: 'girl', name: 'gender', inputValue: '2' }]
+                                        }]
+                                    }
+                                }).showAt(pos[0], pos[1] + 80);
+
+                                Ext.getCmp('myWindow').getEl().on('mouseleave', function () {
+                                    Ext.getCmp('myWindow').hide();
+                                });
+                            } else {
+                                Ext.getCmp('myWindow').show();
+                            }
+
+                        });
+                    }
+                },
+                renderTo: Ext.getBody()
+            })
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -20,7 +20,7 @@
                 width: 1000,
                 items: [{
                     xtype: 'button',
-                    id:'myButton',
+                    id: 'myButton',
                     floating: true,
                     autoShow: true,
                     text: 'floating Button'
@@ -28,7 +28,7 @@
                     xtype: 'datefield'
                 }, {
                     xtype: 'grid',
-                    id:'myGrid',
+                    id: 'myGrid',
                     title: 'Grid',
                     store: [{
                         name: 'Lisa',
@@ -61,24 +61,24 @@
                     height: 200,
                     width: 400
                 }],
-                tbar:[{
-                    text:'add float button',
-                    handler:function(){
+                tbar: [{
+                    text: 'add float button',
+                    handler: function () {
                         var myButton = Ext.create('Ext.button.Button', {
-                        text:'My Button 2',
-                        id:'myButton2',
-                        floating:true,                  
-                        alignTarget:'myGrid',
-                        defaultAlign:'tr-tr'
-                    });
-                    Ext.getCmp('myButton2').show(); 
+                            text: 'My Button 2',
+                            id: 'myButton2',
+                            floating: true,
+                            alignTarget: 'myGrid',
+                            defaultAlign: 'tr-tr'
+                        });
+                        Ext.getCmp('myButton2').show();
                     }
                 }],
                 renderTo: Ext.getBody()
             });
 
             //Ext.getCmp('myButton').show(); //等同autoShow: true设置
-            Ext.getCmp('myButton').alignTo('myGrid','tr-tr'); //第一个参数目标组件ID
+            Ext.getCmp('myButton').alignTo('myGrid', 'tr-tr'); //第一个参数目标组件ID
             //Ext.getCmp('myButton').alignTo(Ext.getCmp('myGrid'),'tr-tr');//第一个参数目标组件对象
         });
     </script>

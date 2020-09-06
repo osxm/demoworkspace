@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Locked Grid</title>
+    <link rel="stylesheet" type="text/css" href="../build/development/Nplm/classic/resources/Nplm-all.css" />
+    <script type="text/javascript" src="../ext/build/ext-all-debug.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function () {
+
+            Ext.define('Nplm.view.base.ItemPanel', {
+                extend: 'Ext.panel.Panel',
+                xtype: 'ItemPanel',
+                items: [],
+                initComponent: function () {
+                    var me = this;
+
+                    var formCfg = {
+                        xtype: 'form',
+                        items: [{
+                            xtype: 'fieldset',
+                            layout: 'hbox',
+                            items: [{
+                                xtype: 'combobox',
+                                fieldLabel: 'Combox'
+                            }, {
+                                xtype: 'datefield',
+                                fieldLabel: 'Date'
+                            }, {
+                                xtype: 'button',
+                                margin: '0 0 0 10',
+                                padding: '6 3 3 3',
+                                border: 0,
+                                iconCls: 'nplm-remove',
+                                style: {
+                                    color: '#999',
+                                    backgroundColor: 'transparent'
+                                }
+                            }]
+
+                        }]
+                    };
+                    var gridCfg = {
+                        xtype: 'grid',
+                        title: 'Simpsons',
+                        store: gridStore,
+                        columns: [{
+                            text: 'Name',
+                            dataIndex: 'name'
+                        }, {
+                            text: 'Email',
+                            dataIndex: 'email',
+                            flex: 1
+                        }, {
+                            text: 'Phone',
+                            dataIndex: 'phone'
+                        }],
+                        height: 200,
+                        width: 400
+                    };
+                    Ext.apply(me, {
+                        items: [formCfg, gridCfg]
+                    });
+                    this.callParent();
+                }
+            });
+
+            var gridStore = Ext.create('Ext.data.Store', {
+                fields: ['name', 'email', 'phone'],
+                data: [{
+                    name: 'Lisa',
+                    email: 'lisa@simpsons.com',
+                    phone: '555-111-1224'
+                }, {
+                    name: 'Bart',
+                    email: 'bart@simpsons.com',
+                    phone: '555-222-1234'
+                }, {
+                    name: 'Homer',
+                    email: 'homer@simpsons.com',
+                    phone: '555-222-1244'
+                }, {
+                    name: 'Marge',
+                    email: 'marge@simpsons.com',
+                    phone: '555-222-1254'
+                }]
+            });
+
+            /*Ext.create('Nplm.view.base.ItemPanel', {
+                title : 'Simpsons',
+                height : 800,
+                width : 1000,
+                renderTo : Ext.getBody()
+            });
+        	
+        	
+            Ext.create('Nplm.view.base.ItemPanel', {
+                title : 'Simpsons',
+                height : 800,
+                width : 1000,
+                renderTo : Ext.getBody()
+            });*/
+
+
+            /*{
+                xtype:'button',
+                floating:true,
+                text:'hello'
+            	
+            }*/
+
+            Ext.create('Ext.panel.Panel', {
+                height: 800,
+                width: 1000,
+                items: [{
+                    xtype: 'container',
+                    html: 'button div',
+                    id: 'mydiv'
+                },
+                {
+                    xtype: 'button',
+                    text: 'hello',
+                    alwaysOnTop: true,
+                    floating: true,
+                    alignTarget: 'mydiv2',
+                    defaultAlign: 'tl-tr?',
+                    autoShow: true
+                }, {
+                    xtype: 'tabpanel',
+                    items: [
+                        {
+                            title: 'Tab 1',
+                            bodyPadding: 10,
+                            html: 'A simple tab'
+                        },
+                        {
+                            title: 'Tab 2',
+                            xtype: 'ItemPanel'
+                        }
+                    ]
+                }, {
+                    xtype: 'container',
+                    html: 'button div2',
+                    id: 'mydiv2'
+                }]
+                //,renderTo : Ext.getBody()
+            });
+
+
+            Ext.create('Ext.panel.Panel', {
+                height: 800,
+                width: 1000,
+                items: [{
+                    xtype: 'button',
+                    floating: true,
+                    autoShow: true,
+                    //alwaysOnTop:true,
+                    text: 'floating Button'
+                }, {
+                    xtype: 'datefield'
+                }, {
+                    xtype: 'grid',
+                    title: 'Grid',
+                    store: [{
+                        name: 'Lisa',
+                        email: 'lisa@simpsons.com',
+                        phone: '555-111-1224'
+                    }, {
+                        name: 'Bart',
+                        email: 'bart@simpsons.com',
+                        phone: '555-222-1234'
+                    }, {
+                        name: 'Homer',
+                        email: 'homer@simpsons.com',
+                        phone: '555-222-1244'
+                    }, {
+                        name: 'Marge',
+                        email: 'marge@simpsons.com',
+                        phone: '555-222-1254'
+                    }],
+                    columns: [{
+                        text: 'Name',
+                        dataIndex: 'name'
+                    }, {
+                        text: 'Email',
+                        dataIndex: 'email',
+                        flex: 1
+                    }, {
+                        text: 'Phone',
+                        dataIndex: 'phone'
+                    }],
+                    height: 200,
+                    width: 400
+                }],
+                renderTo: Ext.getBody()
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

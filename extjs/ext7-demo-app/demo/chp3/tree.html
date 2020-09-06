@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Tree Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var store = Ext.create('Ext.data.TreeStore', {
+                root: {
+                    expanded: true,
+                    children: [
+                        { text: '魏', leaf: true },
+                        {
+                            text: '蜀', expanded: true, children: [
+                                { text: '刘备', leaf: true },
+                                { text: '关羽', leaf: true }
+                            ]
+                        },
+                        { text: '吴', leaf: true }
+                    ]
+                }
+            });
+
+            Ext.create('Ext.tree.Panel', {
+                title: '三国',
+                width: 400,
+                height: 400,
+                store: store,
+                rootVisible: false,
+                viewConfig: {
+                    plugins: {
+                        treeviewdragdrop: {
+                            dragText: 'Drag and drop to reorganize'
+                        }
+                    }
+                },
+                renderTo: Ext.getBody()
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

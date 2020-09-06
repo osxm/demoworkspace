@@ -94,14 +94,14 @@ Ext.define('Ext7DemoApp.view.main.Main', {
             html: '{loremIpsum}'
         }
     }, {
-        title: 'Settings',
-        iconCls: 'x-fa  fa-cog',
-        bind: {
-            html: '{loremIpsum}'
-        }
-    }, {
         title: '三国名人录',
         iconCls: 'x-fa fa-user',
-        items:{xtype: 'usergrid'}
+        items:{xtype: 'UserQuery'}
+    }, {
+        title: 'Chapter 12',
+        iconCls: 'x-fa fa-user',
+        items:[{xtype: 'dragdropfile'},{
+            xtype: 'wigetcolgrid'   
+        }]
     }]
 });

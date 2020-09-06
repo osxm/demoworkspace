@@ -1,0 +1,36 @@
+{
+    "framework": "jasmine",
+    "libs": [],
+    "coverageFilters": [],
+    "scenarios": [
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/User/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "User",
+            "name": "User"
+        },
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/UnitTest/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "UnitTest",
+            "name": "UnitTest"
+        }
+    ],
+    "pageObjects": []
+}

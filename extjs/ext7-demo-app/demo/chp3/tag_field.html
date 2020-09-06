@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS6 Sample</title>
+    <script type="text/javascript" src="../ext/build/ext-all-debug.js"></script>
+    <link href="../build/development/Extjs6App/classic/resources/Extjs6App-all.css" rel="stylesheet" type="text/css" />
+    <script>
+	//类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var shows = Ext.create('Ext.data.Store', {
+                fields: ['id', 'show'],
+                data: [
+                    { id: '0', show: 'UserName1' },
+                    { id: '1', show: 'UserName2' },
+                    { id: '2', show: 'UserName3' },
+                    { id: '3', show: 'UserName4' },
+                    { id: '4', show: 'UserName5' },
+                    { id: '5', show: 'UserName6' }
+                ]
+            });
+
+            Ext.create('Ext.form.Panel', {
+                renderTo: Ext.getBody(),
+                title: 'Sci-Fi Television',
+                height: 200,
+                tbar: [{
+                    text: 'Click Me',
+                    handler: function () {
+                        var myTagField = Ext.getCmp("myTagField");
+                        alert(myTagField.getValue());
+                    }
+                }],
+                width: 800,
+                items: [{
+                    id: 'myTagField',
+                    xtype: 'tagfield',
+                    width: 600,
+                    fieldLabel: 'Select a Show',
+                    forceSelection: false,
+                    modal: true,
+                    //enableRegEx :true,
+                    store: shows,
+                    displayField: 'show',
+                    valueField: 'id',
+                    queryMode: 'local',
+                    clearFilterOnBlur: false,
+                    validateOnBlur: true,
+                    listeners: {
+                        /*expand:function(thisField){
+                            //alert("beforeselect");
+                        },
+                        beforeselect:function(thisField){
+                             //  alert("beforeselect");
+                        },*/
+                        blur: function (thisField) {
+                            var rawValue = thisField.getRawValue();
+                            var rawValueArray = rawValue.split(",");
+                            var store = thisField.getStore();
+                            var values = [];
+                            if (store != null) {
+                                //var iCount = store.getTotalCount();
+                                var allDatas = store.getData().getSource();
+                                var iCount = allDatas.getCount();
+                                //alert(iCount);
+                                for (var i in rawValueArray) {
+                                    var show = rawValueArray[i];
+                                    for (j = 0; j < iCount; j++) {
+                                        var model = allDatas.getAt(j);
+                                        if (model.get("show") === show) {
+                                            //values.push(model.get("id"));
+                                            values.push(model);
+                                            break;
+                                        }
+                                    }
+                                }
+                                thisField.setValue(values);
+                            } else {
+                                thisField.setValue(null);
+                            }
+                        }
+                    }
+                    //,filterPickList: true
+                }]
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

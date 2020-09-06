@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>ExtJS7 Form Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+            Ext.create('Ext.form.Panel', {
+                items: [{
+                    xtype: 'textfield',
+                    fieldLabel: '文本输入框'
+                }],
+                renderTo: 'mydiv1'
+            });
+
+            Ext.create('Ext.container.Container', {
+                items: {
+                    xtype: 'form',
+                    items: [{
+                        xtype: 'textfield',
+                        fieldLabel: '文本输入框'
+                    }, {
+                        xtype: 'displayfield',
+                        fieldLabel: '显示字段',
+                        value: 'Hello'
+                    }, {
+                        xtype: 'textarea',
+                        fieldLabel: '文本区块'
+                    }, {
+                        xtype: 'numberfield',
+                        fieldLabel: '数字字段'
+                    }, {
+                        xtype: 'spinnerfield',
+                        fieldLabel: '具有上下微调按钮字段 ',
+                        step: 3
+                    }, {
+                        xtype: 'datefield',
+                        fieldLabel: '日期字段'
+                    }, {
+                        xtype: 'timefield',
+                        fieldLabel: '时间字段'
+                    }, {
+                        xtype: 'combobox',
+                        fieldLabel: '下拉单选项',
+                        store: ['选项1', '选项2', '选项3']
+                    }, {
+                        xtype: 'radio',
+                        fieldLabel: '单选框'
+                    }, {
+                        xtype: 'checkbox',
+                        fieldLabel: '复选框'
+                    }, {
+                        xtype: 'tagfield',
+                        fieldLabel: '标签字段',
+                        store: ['选项1', '选项2', '选项3']
+                    }, {
+                        xtype: 'filefield',
+                        fieldLabel: '文件上传'
+                    }, {
+                        xtype: 'hidden',
+                        fieldLabel: '隐藏字段'
+                    }]
+                },
+                renderTo: 'mydiv2'
+
+            });
+
+
+
+            Ext.create('Ext.form.Panel', {
+                items: [{
+                    xtype: 'fieldset',
+                    title: '基本信息', //标题
+                    collapsible: true, //可以收合
+                    layout: 'column',//布局
+                    defaults: {  //子元素设置
+                        xtype: 'textfield',
+                        columnWidth: 0.5
+                    },
+                    items: [{
+                        fieldLabel: '姓名'
+                    }, {
+                        fieldLabel: '籍贯'
+                    }]
+                }],
+                renderTo: 'mydiv3'
+            });
+
+
+
+            Ext.create('Ext.form.Panel', {
+                items: [{
+                    xtype: 'fieldcontainer',
+                    fieldLabel: '姓名',
+                    width:400,
+                    layout: 'hbox',
+                    items: [{
+                        xtype: 'textfield',
+                        emptyText: '姓',
+                        flex: 1
+                    }, {
+                        xtype: 'textfield',
+                        emptyText: '名',
+                        flex: 3
+                    }]
+                }],
+                renderTo: 'mydiv4'
+            });
+
+            Ext.create('Ext.form.Panel', {
+                items: [{
+                    xtype: 'slider',
+                    width: 200,
+                    fieldLabel:'音量',
+                    increment: 10,
+                    minValue: 0,
+                    maxValue: 100
+                }],
+                renderTo: 'mydiv5'
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="mydiv1"></div> <br><br>
+    <hr>
+    <div id="mydiv2"></div> <br><br>
+    <hr>
+    <div id="mydiv3"></div> <br><br>
+    <hr>
+    <div id="mydiv4"></div> <br><br>
+    <hr>
+    <div id="mydiv5"></div> <br><br>
+    <hr>
+</body>
+
+</html>

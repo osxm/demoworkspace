@@ -1,0 +1,24 @@
+{
+    "framework": "jasmine",
+    "libs": [],
+    "coverageFilters": [],
+    "scenarios": [
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/Login/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "Login",
+            "name": "Login",
+            "page": "login"
+        }
+    ],
+    "pageObjects": [],
+    "subjectUrl": "http://www.badouzhixue.com/"
+}

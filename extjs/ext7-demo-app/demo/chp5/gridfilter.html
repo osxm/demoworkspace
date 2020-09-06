@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>Grid高级 Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/Ext7DemoApp/classic/resources/Ext7DemoApp-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+    //类型定义
+    </script>
+
+    <script>
+        Ext.onReady(function () {
+
+            var dataArray = [{ id: 1, name: '刘备', kingdom: "蜀国" },
+            { id: 2, name: '曹操', kingdom: "魏国" },
+            { id: 3, name: '孙权', kingdom: "吴国" },
+            { id: 4, name: '关羽', kingdom: "蜀国" },
+            { id: 5, name: '关平', kingdom: "蜀国" }];
+            var myGrid = Ext.create('Ext.grid.Panel', {
+                title: '三国名人录',
+                plugins: {
+                    gridfilters: true
+                },
+                columns: [
+                    { text: 'Id', dataIndex: 'id' },
+                    {
+                        text: 'Name', dataIndex: 'name'
+                        //,filter:{type:'string'}
+                        , filter: 'string'
+                    },
+                    {
+                        text: 'Kingdom', dataIndex: 'kingdom', filter: {
+                            type: 'list'
+                            //,options:['魏国','蜀国','吴国']
+                        }
+                    },
+                ],
+                store: dataArray,
+                tbar: [{
+                    text: 'Clear All Filters',
+                    handler: function () {
+                        //方式1： 关闭过滤器，但是值没被清除
+                        var filters = myGrid.findPlugin("gridfilters");
+                        filters.clearFilters(); //关闭所有的过滤器
+
+                        //方式2： 清除每个过滤器的值
+                        var columns = myGrid.getColumns();
+                        for(var i in columns){
+                            var column = columns[i];
+                            var filter = column.filter;
+                            if(filter!=null){
+                                filter.setValue("");
+                            }
+                        }
+                    }
+                }],
+
+                renderTo: Ext.getBody()
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -7,13 +7,46 @@
     <title>Debug in Chrome</title>
     <script>
         var s = "Chrome调试";
-        debugger;
+        //debugger;
         //window.alert(s); //调用window的alert()方法
         //alert(s);//省略window对象，直接调用方法
         
+        console.log("通用信息");
+        console.info("Info 级别信息");
+        console.debug("Debug 调试级别信息");
+        console.warn("Warn 警告级别信息");   
+        console.error("Error错误级别信息");
+
+        var generals = [{
+                "id": 101,
+                "kingdomId": 1,
+                "name": "刘备"
+            }, {
+                "id": 102,
+                "kingdomId": 1,
+                "name": "关羽"
+            }];
+        console.table(generals);
+
+        console.time('My Timer');
+        var items = [];
+        for(var i = 0; i < 1000000; i++){
+          items.push({index: i});
+        }
+        console.timeEnd('My Timer');
 
 
-
+        function func1(){
+            func2();
+        }
+        function func2(){
+            func3();
+        }
+        function func3(){
+            console.log("this is func3 call by func2, func2 call by func1");
+            console.trace("func3 trace");
+        }
+        func1();
 
     </script>
 
