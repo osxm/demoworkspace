@@ -1,0 +1,19 @@
+{
+    "frameworks": {
+        "ext": {
+            "path": "ext",
+            "version": "6.6.0.258"
+        }
+    },
+    "build": {
+        "dir": "${workspace.dir}/build"
+    },
+    "packages": {
+        "dir": "${workspace.dir}/packages/local,${workspace.dir}/packages",
+        "extract": "${workspace.dir}/packages/remote"
+    },
+    "name": "MyTestProj",
+    "tests": {
+        "path": "test\\project.json"
+    }
+}

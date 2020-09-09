@@ -1,0 +1,24 @@
+{
+    "framework": "jasmine",
+    "libs": [],
+    "coverageFilters": [],
+    "scenarios": [
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/EndToEnd/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "webdriverContext": "webdriver",
+            "sandbox": true,
+            "globals": "*",
+            "directory": "EndToEnd",
+            "name": "EndToEnd",
+            "page": "http://localhost:1841"
+        }
+    ],
+    "pageObjects": []
+}

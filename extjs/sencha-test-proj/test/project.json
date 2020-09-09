@@ -1,0 +1,53 @@
+{
+    "framework": "jasmine",
+    "libs": [],
+    "coverageFilters": [],
+    "scenarios": [
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/Baidu/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "Baidu",
+            "name": "Baidu",
+            "page": "https://www.baidu.com/"
+        },
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/New_Scenario_1/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "JD",
+            "name": "JD",
+            "page": "https://search.jd.com/"
+        },
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/Ext_Dashboard/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "Ext_Dashboard",
+            "name": "Ext Dashboard",
+            "page": "https://examples.sencha.com/extjs/6.2.0/examples/admin-dashboard/"
+        }
+    ],
+    "pageObjects": []
+}

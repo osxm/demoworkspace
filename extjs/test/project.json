@@ -1,0 +1,40 @@
+{
+    "framework": "jasmine",
+    "libs": [],
+    "coverageFilters": [],
+    "scenarios": [
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/Dashboard/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "sandbox": false,
+            "globals": "*",
+            "directory": "Dashboard",
+            "name": "Dashboard",
+            "page": "#dashboard"
+        },
+        {
+            "libs": [
+                {
+                    "disabled": false,
+                    "path": "/test/login/lib",
+                    "type": "directory"
+                }
+            ],
+            "coverageFilters": [],
+            "webdriverContext": "webdriver",
+            "sandbox": true,
+            "globals": "*",
+            "directory": "login",
+            "name": "login",
+            "page": "#login"
+        }
+    ],
+    "pageObjects": [],
+    "subjectUrl": "https://examples.sencha.com/extjs/6.2.0/examples/admin-dashboard"
+}
