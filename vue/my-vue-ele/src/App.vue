@@ -10,6 +10,14 @@
 
 <script>
 
+//  /api/test 是使用mockjs 模拟的服务地址
+import axios from 'axios'
+axios.get('/api/test', {            
+    params: {}        
+}).then(res => {            
+    console.log(res);        
+});
+
 </script>
 
 <style>

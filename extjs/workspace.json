@@ -1,4 +1,19 @@
 {
+    /**
+     *  An array of the paths to all the applications present in this workspace
+     */
+    "apps": [
+        "Ext73App"
+    ],
+
+    "frameworks": {
+        "ext": {
+            "path":"ext",
+            "package":"ext@7.3.0.55",
+            "version":"7.3.0.55"
+        }
+    },
+
     "name": "extjsTest",
     "build": {
         "dir": "${workspace.dir}/build"
