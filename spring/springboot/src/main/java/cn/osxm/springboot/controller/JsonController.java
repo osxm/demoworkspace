@@ -3,14 +3,24 @@
  * @Package cn.osxm.springboot.rest
  * @Description: TODO
  * @author oscarchen
- * @date 2020Äê3ÔÂ26ÈÕ
+ * @date 2020ï¿½ï¿½3ï¿½ï¿½26ï¿½ï¿½
  * @version V1.0
  */
 package cn.osxm.springboot.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.osxm.springboot.model.Animal;
 
@@ -30,5 +40,7 @@ public class JsonController {
 		tiger.setExtinct("false");
 		return tiger;
 	}
+	
+
 
 }
