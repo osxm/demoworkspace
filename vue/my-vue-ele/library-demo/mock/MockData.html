@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chen Xueming">
+    <title>Mockjs Demo</title>
+    <script type="text/javascript" src="../lib/mock.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>      
+        //1. 产生一个JSON对象， 包含一个键值是list的元素，其值是一个长度1到10的数组
+        var data = Mock.mock({
+        // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+        'list|1-10': [{
+        // 属性 id 是一个自增数，起始值为 1，每次增 1
+        'id|+1': 1
+            }]
+        });
+        // 输出结果
+        console.log(JSON.stringify(data, null, 4)); // 4 是缩进
+    </script>
+</body>
+
+</html>
