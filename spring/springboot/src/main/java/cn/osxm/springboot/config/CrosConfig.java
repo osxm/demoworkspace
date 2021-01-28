@@ -26,4 +26,7 @@ public class CrosConfig extends WebMvcConfigurationSupport {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedOrigins("*").allowCredentials(true).allowedMethods(ORIGINS).maxAge(3600);
 	}
+	
+	
+	
 }
