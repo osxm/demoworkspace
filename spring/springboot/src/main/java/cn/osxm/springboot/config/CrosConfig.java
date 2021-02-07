@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @Description: TODO
  * @author oscarchen
  */
-@Configuration
+//@Configuration
 public class CrosConfig extends WebMvcConfigurationSupport {
 
 	static final String ORIGINS[] = new String[] { "GET", "POST", "PUT", "DELETE" };

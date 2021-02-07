@@ -15,10 +15,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.osxm.springboot.model.CkEditorUploadResp;
@@ -29,11 +31,18 @@ import cn.osxm.springboot.model.CkEditorUploadResp;
   * @Description: TODO
   * @author oscarchen
   */
-@RestController
+@Controller
 @RequestMapping("/ckeditor")
 public class CkEditorController {
 
+	@GetMapping("/page")
+	public String ckeditorPage() {
+		return "ckeditor";
+	}
+	
+	
 	@RequestMapping("/uploadimage")
+	@ResponseBody
 	public CkEditorUploadResp uploadImage(@RequestParam(name = "upload")MultipartFile file) {
 		CkEditorUploadResp  resp = new CkEditorUploadResp();
 		String fullFileName = file.getOriginalFilename();
