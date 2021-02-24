@@ -28,5 +28,4 @@ public class CrosConfig extends WebMvcConfigurationSupport {
 	}
 	
 	
-	
 }

@@ -20,7 +20,6 @@ public class StaticResourceConfig {
 	//extends WebMvcConfigurationSupport
 	{
 
-		
 		//WebMvcAutoConfiguration
 		//ResourceProperties
 		//@Override

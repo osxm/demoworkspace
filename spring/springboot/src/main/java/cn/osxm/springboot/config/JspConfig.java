@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author xuemi
  *
  */
-//@Configuration
+@Configuration
 public class JspConfig extends WebMvcConfigurationSupport {
 
 	//@Bean
@@ -26,8 +26,9 @@ public class JspConfig extends WebMvcConfigurationSupport {
 	}
 	
 	 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+   @Override
+   public void addResourceHandlers(ResourceHandlerRegistry registry) {
+       registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+	   //registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 }
