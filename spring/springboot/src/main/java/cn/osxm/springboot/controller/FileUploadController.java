@@ -48,7 +48,7 @@ public class FileUploadController {
 
 			String targetFullFilePath = uploadFolder.getAbsolutePath() + "/" + fileName;
 			File targetFile = new File(targetFullFilePath);
-			if (targetFile.exists()) {
+			if (!targetFile.exists()) {
 				targetFile.createNewFile();
 			}
 			InputStream in = file.getInputStream();

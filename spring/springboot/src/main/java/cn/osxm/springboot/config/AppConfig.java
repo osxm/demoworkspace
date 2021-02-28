@@ -15,12 +15,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author xuemi
  *
  */
-//@Configuration
-public class JspConfig extends WebMvcConfigurationSupport {
+@Configuration
+public class AppConfig extends WebMvcConfigurationSupport {
 
 	static final String ORIGINS[] = new String[] { "GET", "POST", "PUT", "DELETE" };
-	
-	
+
 	@Bean
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -28,20 +27,16 @@ public class JspConfig extends WebMvcConfigurationSupport {
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
-	
-	 
-   @Override
-   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-       registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-	   //registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-    }
-   
-   
-	
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+		// registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+	}
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**").allowedOrigins("*").allowCredentials(true).allowedMethods(ORIGINS).maxAge(3600);
 	}
-	
+
 }
