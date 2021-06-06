@@ -52,8 +52,6 @@ public class CkEditorController {
 		CkEditorUploadResp  resp = new CkEditorUploadResp();
 		String fullFileName = file.getOriginalFilename();
 		String fileExtension = StringUtils.unqualify(fullFileName);
-		//String fileExtension = StringUtils.stripFilenameExtension(fullFileName);
-		//String sfileDestPath = "D:\\filesys"; //如果没找到static/uploadimages
 		String sfileDestPath = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "static"+File.separator+"uploadimages";
 		File destFolder = new File(sfileDestPath);
 		if(!destFolder.exists()) {
